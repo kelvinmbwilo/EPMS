@@ -14,6 +14,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $table = 'users';
+    protected $guarded = 'id';
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -26,4 +30,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function userrole()
+    {
+        return $this->belongsTo('App\UserRoles', 'user_role_id', 'id');
+
+   }
 }
